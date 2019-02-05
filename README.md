@@ -42,7 +42,7 @@ repoUrl: https://github.com/username/repositoryname.git
 branch: branch-name*
 </pre>
 
-#####*If no branch is specified then the branch will default to "master"
+**If no branch is specified then the branch will default to "master"*
 
 ### Output
 #### Console output
