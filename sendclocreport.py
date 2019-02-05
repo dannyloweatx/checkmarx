@@ -6,6 +6,7 @@ from email import encoders
 from pip._internal import main
 from datetime import datetime
 
+# Send email with attached output
 def sendEmail():
 	port = 587
 	smtpServer = "smtp.gmail.com"
@@ -29,10 +30,12 @@ def sendEmail():
 		server.starttls(context=context)
 		server.login(senderEmail, password)
 		server.sendmail(senderEmail, receiverEmail, message.as_string())
-		
+
+# Utility method to install packages if needed
 def install(package):
 	main(['install', package])
-	
+
+# Process the repository and build the cloc report
 def processRepo():
 	repo = getRepoName()
 	print ('Begin processing repository ' + repo + '...')
@@ -49,10 +52,12 @@ def processRepo():
 	print ('Obtaining cloc report for repository ' + repo + '...')
 	proc = subprocess.Popen([binDirectory+clocExecutable,curDirectory+repo, "--csv","--out", outputFile , "--quiet"], stdout=subprocess.PIPE)
 	proc.stdout.read()
-	
+
+# Get repository name from URL
 def getRepoName():
 	return(repoUrl[repoUrl.rfind('/')+1:repoUrl.rfind('.')])
-	
+
+# Input validation method
 def validateInput():
 	errorMessage = ""
 	if not re.match(r"[^@]+@[^@]+\.[^@]+", senderEmail):
@@ -81,18 +86,21 @@ binDirectory = "./bin/"
 clocExecutable = "cloc-1.80.exe"
 defaultBranch = "master"
 
+# Install git
 try:
 	import git
 except ImportError:
 	print('git is not installed, installing it now!')
 	install('git')
 
+# Install PyYAML
 try:
 	import yaml
 except ImportError:
 	print('PyYAML is not installed, installing it now!')
 	install('PyYAML')
 
+# Retrieve input
 if len(sys.argv) > 1:
 	fileName = sys.argv[1]
 	with open(fileName) as yamlFile:
@@ -112,8 +120,8 @@ else:
 if (len(branch)==0):
 	branch = defaultBranch
 	
+# Begin processing
 validateInput()	
-
 outputFile = logtime+getRepoName()+"-"+branch+".csv"
 startTime = datetime.now()	
 processRepo()
@@ -121,4 +129,5 @@ sendEmail()
 endTime = datetime.now()	
 totalTime = endTime - startTime
 print ('Process for branch ' + branch + ' of repository ' + getRepoName() + ' completed successfully (' + str(totalTime.total_seconds()) + ' seconds)')
+# End processing
 	
