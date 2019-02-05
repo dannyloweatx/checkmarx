@@ -55,7 +55,7 @@ Process for branch &lt;branch name&gt; of repository &lt;repository name&gt; com
 An email will be sent to the destination email with the subject "cloc report for branch &lt;branch name&gt; of repository &lt;repository name&gt;"
 - The email will contain no message
 - The output of the script is emailed as an attachment to the specified destination email as a .CSV file
-    - &lt;timestamp in yyyymmddHHMMSS format&gt;Repository Name-branch name.csv
+    - &lt;timestamp in yyyymmddHHMMSS format&gt;&lt;Repository Name&gt;-&lt;branch name&gt;.csv
     - **Example:** 20190205090440cloc-master.csv
 
 #### CSV Column Headers
