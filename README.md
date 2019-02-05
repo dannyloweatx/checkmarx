@@ -1,5 +1,5 @@
 # sendclocreport
-## *Send repository cloc report to a specified email*
+## *Send repository cloc report to a specified email address as an attachment*
 
 * * *
 
