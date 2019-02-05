@@ -33,8 +33,7 @@ Type the branch name you want to process: <branch name>
 C:\dev\checkmarx>python sendclocreport.py samplefile.yml
 ```
 
-### YAML file format
-*Save as *filename.yml*
+#### YAML file format
 <pre>
 senderEmail: senderemail@gmail.com
 password: &lt;sender email password&gt;
