@@ -66,3 +66,4 @@ An email will be sent to the destination email with the subject "cloc report for
 - **code** - How many lines are comments in the files per language
 - **github.com/AlDanial/cloc v 1.80 &lt;processing time and processing speed&gt;**
 	- Example: github.com/AlDanial/cloc v 1.80  T=1.00 s (380.0 files/s, 49176.0 lines/s)
+	- Column has no other values
