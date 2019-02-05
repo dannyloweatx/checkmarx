@@ -9,7 +9,7 @@ Works with Github, Bitbucket, GitLab
 
 ### Requirements
 - Python 3.7.2
-    - Must be on the system "path"
+    - Must be on the system "path" in order to work as shown
 - Gmail account to send the report
 
 ### Usage
