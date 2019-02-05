@@ -35,17 +35,17 @@ C:\dev\checkmarx>python sendclocreport.py samplefile.yml
 *Save as *filename.yml*
 <pre>
 senderEmail: senderemail@gmail.com
-password: <sender email password>
+password: &lt;sender email password&gt;
 receiverEmail: destinationemail@gmail.com
 repoUrl: https://github.com/username/repositoryname.git
 branch: branch-name
 </pre>
 
 ### Output
-An email will be sent to the destination email with the subject "cloc report for branch <branch name> of repository <repository name>"
+An email will be sent to the destination email with the subject "cloc report for branch &lt;branch name&gt; of repository &lt;repository name&gt;"
 - The email will contain no message
 - The output of the script is emailed as an attachment to the specified destination email as a .CSV file
-    - <timestamp in yyyymmddHHMMSS format>Repository Name-branch name.csv
+    - &lt;timestamp in yyyymmddHHMMSS format&gt;Repository Name-branch name.csv
     - **Example:** 20190205090440cloc-master.csv
 
 #### CSV Column Headers
@@ -54,5 +54,5 @@ An email will be sent to the destination email with the subject "cloc report for
 - **blank** - How many lines are blank in the files per language
 - **comment** - How many lines are comments in the files per language
 - **code** - How many lines are comments in the files per language
-- github.com/AlDanial/cloc v 1.80 <processing time and processing speed>
+- github.com/AlDanial/cloc v 1.80 &lt;processing time and processing speed&gt;
 	- Example: github.com/AlDanial/cloc v 1.80  T=1.00 s (380.0 files/s, 49176.0 lines/s)
