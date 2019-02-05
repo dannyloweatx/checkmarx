@@ -3,7 +3,7 @@
 
 * * *
 
-Sendclocreport will clone a repository, check out a specified branch, scan the specified source repository with CLOC and send the output of CLOC to an email address specified.
+Sendclocreport will clone a repository, check out a specified branch, scan the specified source repository with CLOC (count line of code) and send the output of CLOC to an email address specified.
 
 Works with Github, Bitbucket, GitLab
 
