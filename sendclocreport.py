@@ -9,7 +9,7 @@ from datetime import datetime
 def sendEmail():
 	port = 587
 	smtpServer = "smtp.gmail.com"
-	subject = 'cloc report for branch %s of repository %s' % (branch, getRepoName())
+	subject = '"cloc report for branch %s of repository %s' % (branch, getRepoName())
 	
 	message = MIMEMultipart()
 	message['Subject'] = subject
@@ -56,16 +56,15 @@ def getRepoName():
 def validateInput():
 	errorMessage = ""
 	if not re.match(r"[^@]+@[^@]+\.[^@]+", senderEmail):
-		errorMessage = "\n" if len(errorMessage)>0 else ""
 		errorMessage = "Sender email format is invalid"
 	
 	if not re.match(r"[^@]+@[^@]+\.[^@]+", receiverEmail):
-		errorMessage = "\n" if len(errorMessage)>0 else ""
-		errorMessage = "Destination email format is invalid"
+		errorMessage = errorMessage+"\n" if len(errorMessage)>0 else ""
+		errorMessage = errorMessage+"Destination email format is invalid"
 		
 	if not re.match(r"((git|ssh|http(s)?)|(git@[\w\.]+))(:(//)?)([\w\.@\:/\-~]+)(\.git)(\/)?", repoUrl):	
-		errorMessage = "\n" if len(errorMessage)>0 else ""
-		errorMessage = "Git repository is invalid. Must end with .git"
+		errorMessage = errorMessage+"\n" if len(errorMessage)>0 else ""
+		errorMessage = errorMessage+"Git repository is invalid. Must be a valid URL that ends with .git"
 		
 	if (len(errorMessage)>0):
 		sys.exit(errorMessage)
@@ -110,6 +109,9 @@ else:
 	repoUrl = input("Type the URL for the repository: ")
 	branch = input("Type the branch name you want to process: ")
 
+if (len(branch)==0):
+	branch = defaultBranch
+	
 validateInput()	
 
 outputFile = logtime+getRepoName()+"-"+branch+".csv"
