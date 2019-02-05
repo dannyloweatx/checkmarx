@@ -14,6 +14,8 @@ Works with Github, Bitbucket, GitLab
 
 ### Usage
 - Works with both bash and Windows command prompt
+- Syntax is the same with both bash and windows
+- Must run the script from the *checkmarx* directory
 
 **Without YAML (Prompted for values)**
 ```sh
