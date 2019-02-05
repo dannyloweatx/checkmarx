@@ -10,7 +10,8 @@ Works with Github, Bitbucket and GitLab repositories
 ### Requirements
 - Python 3.7.2
     - Python executable must be on the system "path" in order to work as shown
-- Gmail account to send the report
+- Gmail account to use as the "sender" email to send the report
+	- Must have the email address and password
 
 ### Usage
 - Works with bash, PowerShell and Windows command prompt
