@@ -9,7 +9,7 @@ from datetime import datetime
 def sendEmail():
 	port = 587
 	smtpServer = "smtp.gmail.com"
-	subject = '"cloc report for branch %s of repository %s' % (branch, getRepoName())
+	subject = 'cloc report for branch %s of repository %s' % (branch, getRepoName())
 	
 	message = MIMEMultipart()
 	message['Subject'] = subject
