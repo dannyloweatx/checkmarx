@@ -1,15 +1,28 @@
 import smtplib, ssl, getpass, subprocess, pip, sys, os, shutil, re
 from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email import encoders
 from pip._internal import main
+from datetime import datetime
 
 def sendEmail():
 	port = 587
 	smtpServer = "smtp.gmail.com"
-
-	message = MIMEText(messageBody)
+	subject = 'cloc report for branch %s of repository %s' % (branch, getRepoName())
+	
+	message = MIMEMultipart()
 	message['Subject'] = subject
 	message['From'] = senderEmail
 	message['To'] = receiverEmail
+	
+	part = MIMEBase('application', "octet-stream")
+	part.set_payload(open(outputFile, "rb").read())
+	encoders.encode_base64(part)
+	
+	part.add_header('Content-Disposition', 'attachment; filename="'+ outputFile +'"')
+	message.attach(part)
+	
 	context = ssl.create_default_context()
 	print ('Emailing cloc report to  ' + receiverEmail + '...')
 	with smtplib.SMTP(smtpServer, port) as server:
@@ -34,9 +47,8 @@ def processRepo():
 	gitrepo.git.checkout("-f", branch)
 		
 	print ('Obtaining cloc report for repository ' + repo + '...')
-	proc = subprocess.Popen([binDirectory+clocExecutable,curDirectory+repo, "--quiet"], stdout=subprocess.PIPE)
-	output = proc.stdout.read()
-	return(output.decode("utf-8"))
+	proc = subprocess.Popen([binDirectory+clocExecutable,curDirectory+repo, "--csv","--out", outputFile , "--quiet"], stdout=subprocess.PIPE)
+	proc.stdout.read()
 	
 def getRepoName():
 	return(repoUrl[repoUrl.rfind('/')+1:repoUrl.rfind('.')])
@@ -58,6 +70,8 @@ def validateInput():
 	if (len(errorMessage)>0):
 		sys.exit(errorMessage)
 
+#Global variables
+logtime = datetime.now().strftime("%Y%m%d%H%M%S")
 senderEmail = ""
 password = ""
 receiverEmail = ""
@@ -97,11 +111,12 @@ else:
 	branch = input("Type the branch name you want to process: ")
 
 validateInput()	
-	
-output = processRepo()
-subject = 'cloc report for branch %s of repository %s' % (branch, getRepoName())
-messageBody = output
-sendEmail()
 
-print ('Process completed successfully')
+outputFile = logtime+getRepoName()+"-"+branch+".csv"
+startTime = datetime.now()	
+processRepo()
+sendEmail()
+endTime = datetime.now()	
+totalTime = endTime - startTime
+print ('Process for branch ' + branch + ' of repository ' + getRepoName() + ' completed successfully (' + str(totalTime.total_seconds()) + ' seconds)')
 	

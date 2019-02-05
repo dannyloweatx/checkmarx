@@ -5,6 +5,8 @@
 
 Sendclocreport will clone a repository, check out a specified branch, scan the specified source repository with CLOC and send the output of CLOC to an email address specified.
 
+Works with Github, Bitbucket, GitLab
+
 ### Requirements
 - Python 3.7.2
     - Must be on the system "path"
@@ -12,7 +14,6 @@ Sendclocreport will clone a repository, check out a specified branch, scan the s
 
 ### Usage
 - Works with both bash and Windows command prompt
-- Run sendclocreport.py from the directory  containing the "bin" directory
 
 **Without YAML (Prompted for values)**
 ```sh
@@ -39,3 +40,19 @@ receiverEmail: destinationemail@gmail.com
 repoUrl: https://github.com/username/repositoryname.git
 branch: branch-name
 </pre>
+
+### Output
+An email will be sent to the destination email with the subject "cloc report for branch <branch name> of repository <repository name>"
+- The email will contain no message
+- The output of the script is emailed as an attachment to the specified destination email as a .CSV file
+    - <timestamp in yyyymmddHHMMSS format>Repository Name-branch name.csv
+    - **Example:** 20190205090440cloc-master.csv
+
+#### CSV Column Headers
+- **files** - Numbers of files per language 
+- **language** - Programming language of the files
+- **blank** - How many lines are blank in the files per language
+- **comment** - How many lines are comments in the files per language
+- **code** - How many lines are comments in the files per language
+- github.com/AlDanial/cloc v 1.80 <processing time and processing speed>
+	- Example: github.com/AlDanial/cloc v 1.80  T=1.00 s (380.0 files/s, 49176.0 lines/s)
