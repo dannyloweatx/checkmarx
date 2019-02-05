@@ -33,9 +33,9 @@ C:\dev\checkmarx>python sendclocreport.py samplefile.yml
 ### YAML file format
 *Save as *filename.yml*
 <pre>
-    senderEmail: senderemail@gmail.com
-    password: <sender email password>
-    receiverEmail: destinationemail@gmail.com
-    repoUrl: https://github.com/username/repositoryname.git
-    branch: branch-name
+senderEmail: senderemail@gmail.com
+password: <sender email password>
+receiverEmail: destinationemail@gmail.com
+repoUrl: https://github.com/username/repositoryname.git
+branch: branch-name
 </pre>
