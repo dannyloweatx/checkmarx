@@ -44,6 +44,14 @@ branch: branch-name
 </pre>
 
 ### Output
+#### Console output
+*Begin processing repository &lt;repository name%gt;*...
+*Checking out branch &lt;branch name%gt; for repository &lt;repository name%gt;*...
+*Obtaining cloc report for repository &lt;repository name%gt;*...
+*Emailing cloc report to  dannyloweatx@gmail.com...
+*Process for branch &lt;branch name%gt; of repository &lt;repository name%gt;* completed successfully (&lt;processing time%gt;)
+
+#### File output
 An email will be sent to the destination email with the subject "cloc report for branch &lt;branch name&gt; of repository &lt;repository name&gt;"
 - The email will contain no message
 - The output of the script is emailed as an attachment to the specified destination email as a .CSV file
