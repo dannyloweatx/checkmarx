@@ -13,7 +13,7 @@ Works with Github, Bitbucket and GitLab repositories
 - Gmail account to send the report
 
 ### Usage
-- Works with both bash and Windows command prompt
+- Works with bash, PowerShell and Windows command prompt
 - Syntax is the same with both bash and windows
 - Must run the script from the *checkmarx* directory
 
