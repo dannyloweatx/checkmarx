@@ -25,7 +25,7 @@ Sender email password: <sender email password>
 Type the destination email and press enter: <destination email address>
 Type the URL for the repository: <repository url>
 Type location where you want the reposiroty to go: <file location>
-Type the branch name you want to process: <branch name>
+Type the branch name you want to process: <branch name>*
 ```
 
 **With YAML**
@@ -39,8 +39,10 @@ senderEmail: senderemail@gmail.com
 password: &lt;sender email password&gt;
 receiverEmail: destinationemail@gmail.com
 repoUrl: https://github.com/username/repositoryname.git
-branch: branch-name
+branch: branch-name*
 </pre>
+
+#####*If no branch is specified then the branch will default to "master"
 
 ### Output
 #### Console output
