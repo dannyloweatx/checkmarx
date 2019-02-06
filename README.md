@@ -10,9 +10,13 @@ Works with Github, Bitbucket and GitLab repositories
 ### Requirements
 - Python 3.7.2
     - Python executable must be on the system "path" in order to work as shown
+    - Must aslo have pip upgraded
+    - install gitPython if the script doesn't automatically install it
+    	- Run "pip install gitpython" from the command line
 - Gmail account to use as the "sender" email to send the report
 	- Must have the email address and password
 	- Destination email does not have to be a Gmail account
+- Git
 
 ### Usage
 - Works with bash, PowerShell and Windows command prompt
