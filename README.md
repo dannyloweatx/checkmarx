@@ -16,7 +16,7 @@ Works with Github, Bitbucket and GitLab repositories
 - Gmail account to use as the "sender" email to send the report
 	- Must have the email address and password
 	- Destination email does not have to be a Gmail account
-- Git
+- Git (Using version 2.17.0.windows.1)
 
 ### Usage
 - Works with bash, PowerShell and Windows command prompt
