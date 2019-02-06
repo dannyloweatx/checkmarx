@@ -11,7 +11,7 @@ Works with Github, Bitbucket and GitLab repositories
 - Python 3.7.2
     - Python executable must be on the system "path" in order to work as shown
     - Must have pip installed and on the system "path"
-    - install gitPython if the script doesn't automatically install it
+    - Install gitPython if the script doesn't automatically install it
     	- Run "pip install gitpython" from the command line
 - Gmail account to use as the "sender" email to send the report
 	- Must have the email address and password
