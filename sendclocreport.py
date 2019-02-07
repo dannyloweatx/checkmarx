@@ -8,8 +8,6 @@ from datetime import datetime
 
 # Send email with attached output
 def sendEmail():
-	port = 587
-	smtpServer = "smtp.gmail.com"
 	subject = 'cloc report for branch %s of repository %s' % (branch, getRepoName())
 	
 	message = MIMEMultipart()
@@ -75,6 +73,8 @@ def validateInput():
 		sys.exit(errorMessage)
 
 #Global variables
+port = 587
+smtpServer = "smtp.gmail.com"
 logtime = datetime.now().strftime("%Y%m%d%H%M%S")
 senderEmail = ""
 password = ""
